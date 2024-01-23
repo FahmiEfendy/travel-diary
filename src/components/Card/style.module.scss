@@ -1,0 +1,42 @@
+@import '../../styles/base.scss';
+
+.grid_item {
+  border-radius: 10px;
+  background-color: var(--color-bg);
+  height: 400px;
+  position: relative;
+  max-width: 22%;
+  margin: 0 1rem;
+
+  .grid_img {
+    border-radius: 10px;
+    width: 100%;
+    height: 45%;
+    background-color: gray;
+  }
+
+  .bookmark_icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+  }
+
+  .detail_wrapper {
+    padding: 1rem;
+
+    .grid_title {
+      @include font(16px, $font-weight-black, var(--color-text-primary));
+    }
+
+    .grid_date {
+      margin-top: 0.2rem;
+      @include font(14px, $font-weight-regular, var(--color-text-secondary));
+    }
+
+    .grid_description {
+      margin-top: 0.8rem;
+      @include font(16px, $font-weight-regular, var(--color-text-third));
+    }
+  }
+}

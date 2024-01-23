@@ -1,17 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 
 import { ping } from '@containers/App/actions';
-import { stringFormatter } from '@utils/stringFormatter';
 
+import Card from '../../components/Card';
 import classes from './style.module.scss';
-import BookmarkIcon from '../../asset/bookmark-icon.svg';
 
 const Home = () => {
-  const [isLogin, setIsLogin] = useState(false);
-
   const journeyArr = [
     {
       id: 1,
@@ -79,18 +76,6 @@ const Home = () => {
 
   return (
     <Container className={classes.container}>
-      {/* TODO: Get From Global State */}
-      {!isLogin && (
-        <Box className={classes.header_container}>
-          <Typography variant="h4">
-            <FormattedMessage id="app_journey_header_text" />
-          </Typography>
-          <Typography variant="body1">
-            <FormattedMessage id="app_journey_header_sub_text" />
-          </Typography>
-          <Box className={classes.header_backdrop} />
-        </Box>
-      )}
       <Typography variant="h5">
         <FormattedMessage id="app_journey_heading" />
       </Typography>
@@ -101,22 +86,7 @@ const Home = () => {
       <Grid container className={classes.grid_container} rowGap={5}>
         {/* TODO: Fetch Real Data */}
         {journeyArr.map((data) => (
-          <Grid item xs={3} key={data.id} className={classes.grid_item}>
-            {/* TODO: Insert Image */}
-            <Box className={classes.grid_img} />
-            <img src={BookmarkIcon} alt="Bookmark Icon" className={classes.bookmark_icon} />
-            <Box className={classes.detail_wrapper}>
-              <Typography variant="body1" className={classes.grid_title}>
-                {data.title}
-              </Typography>
-              <Typography variant="body1" className={classes.grid_date}>
-                {data.date}
-              </Typography>
-              <Typography variant="body1" className={classes.grid_description}>
-                {stringFormatter(data.description)}
-              </Typography>
-            </Box>
-          </Grid>
+          <Card data={data} key={data.id} />
         ))}
       </Grid>
     </Container>
