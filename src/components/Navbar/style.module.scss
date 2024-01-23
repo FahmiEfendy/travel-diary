@@ -1,10 +1,12 @@
 @import '@styles/base';
 
-.headerWrapper {
+.headerWrapper_logged {
   background-color: var(--color-bg) !important;
   box-shadow: 0 0.25rem 0.75rem rgba(25, 49, 83, 0.2) !important;
   position: sticky;
   top: 0;
+  z-index: 1;
+
   .contentWrapper {
     @include directionX;
 
@@ -13,6 +15,8 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1rem;
+    position: relative;
+    z-index: 10;
 
     .logoImage {
       @include directionX;
@@ -20,12 +24,9 @@
       align-items: center;
 
       .logo {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
-      }
-      .title {
-        font-weight: 700;
+        width: auto;
+        height: 40px;
+        margin-left: 4rem;
       }
     }
 
@@ -61,7 +62,71 @@
         }
       }
     }
+
+    .container_button {
+      button {
+        @include font(16px, $font-weight-semi-bold, var(--color-button-text));
+        color: var(--color-button-text);
+        text-transform: capitalize;
+        padding: 0.1rem 1.5rem;
+      }
+
+      .button_login {
+        border-color: var(--color-button-text);
+      }
+
+      .button_register {
+        margin-left: 1rem;
+      }
+    }
   }
+
+  .header_container {
+    @include directionY;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    padding-left: 3rem;
+    margin-top: 2rem;
+
+    h4 {
+      @include font(64px, $font-weight-thin, var(--color-text-fourth));
+      font-style: italic;
+      width: 30%;
+    }
+
+    p {
+      @include font(24px, $font-weight-thin, var(--color-text-fourth));
+      font-style: italic;
+      width: 50%;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .backdrop {
+    height: 500px;
+    width: 100%;
+    background-color: black;
+    opacity: 25%;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+  }
+}
+
+.headerWrapper {
+  @extend .headerWrapper_logged;
+  height: 500px;
+  background-color: transparent !important;
+  position: static;
+  background-image: url('../../asset/header-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  z-index: 1;
 }
 
 .menu {

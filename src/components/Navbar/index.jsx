@@ -7,18 +7,23 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import NightsStayIcon from '@mui/icons-material/NightsStay';
+import { Box, Button, Typography } from '@mui/material';
 
-import { setLocale, setTheme } from '@containers/App/actions';
+import Profile from '@components/Profile';
+import { setLocale } from '@containers/App/actions';
 
 import classes from './style.module.scss';
+import LogoWhite from '../../asset/logo-white.png';
+import LogoBlack from '../../asset/logo-black.png';
 
-const Navbar = ({ title, locale, theme }) => {
+const Navbar = ({ locale }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [menuPosition, setMenuPosition] = useState(null);
   const open = Boolean(menuPosition);
+
+  // TODO: Get Value From Global State
+  const [isLogin, setIsLogin] = useState(true);
 
   const handleClick = (event) => {
     setMenuPosition(event.currentTarget);
@@ -26,10 +31,6 @@ const Navbar = ({ title, locale, theme }) => {
 
   const handleClose = () => {
     setMenuPosition(null);
-  };
-
-  const handleTheme = () => {
-    dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
   };
 
   const onSelectLang = (lang) => {
@@ -44,22 +45,30 @@ const Navbar = ({ title, locale, theme }) => {
   };
 
   return (
-    <div className={classes.headerWrapper} data-testid="navbar">
+    <div className={isLogin ? classes.headerWrapper_logged : classes.headerWrapper} data-testid="navbar">
       <div className={classes.contentWrapper}>
         <div className={classes.logoImage} onClick={goHome}>
-          <img src="/vite.svg" alt="logo" className={classes.logo} />
-          <div className={classes.title}>{title}</div>
+          <img src={isLogin ? LogoBlack : LogoWhite} alt="logo" className={classes.logo} />
         </div>
-        <div className={classes.toolbar}>
-          <div className={classes.theme} onClick={handleTheme} data-testid="toggleTheme">
-            {theme === 'light' ? <NightsStayIcon /> : <LightModeIcon />}
+        {isLogin ? (
+          <div className={classes.toolbar}>
+            <div className={classes.toggle} onClick={handleClick}>
+              <Avatar className={classes.avatar} src={locale === 'id' ? '/id.png' : '/en.png'} />
+              <div className={classes.lang}>{locale}</div>
+              <ExpandMoreIcon />
+            </div>
+            <Profile />
           </div>
-          <div className={classes.toggle} onClick={handleClick}>
-            <Avatar className={classes.avatar} src={locale === 'id' ? '/id.png' : '/en.png'} />
-            <div className={classes.lang}>{locale}</div>
-            <ExpandMoreIcon />
-          </div>
-        </div>
+        ) : (
+          <Button className={classes.container_button}>
+            <Button variant="outlined" className={classes.button_login}>
+              Login
+            </Button>
+            <Button variant="contained" className={classes.button_register}>
+              Register
+            </Button>
+          </Button>
+        )}
         <Menu open={open} anchorEl={menuPosition} onClose={handleClose}>
           <MenuItem onClick={() => onSelectLang('id')} selected={locale === 'id'}>
             <div className={classes.menu}>
@@ -79,14 +88,23 @@ const Navbar = ({ title, locale, theme }) => {
           </MenuItem>
         </Menu>
       </div>
+      {!isLogin && (
+        <Box className={classes.header_container}>
+          <Typography variant="h4">
+            <FormattedMessage id="app_journey_header_text" />
+          </Typography>
+          <Typography variant="body1">
+            <FormattedMessage id="app_journey_header_sub_text" />
+          </Typography>
+        </Box>
+      )}
+      {!isLogin && <Box className={classes.backdrop} />}
     </div>
   );
 };
 
 Navbar.propTypes = {
-  title: PropTypes.string,
   locale: PropTypes.string.isRequired,
-  theme: PropTypes.string,
 };
 
 export default Navbar;
