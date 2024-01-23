@@ -12,4 +12,8 @@ export default {
   app_register_form_label_1: 'Full Name',
   app_register_form_label_2: 'Password',
   app_register_button: 'Register',
+
+  app_login_button: 'Login',
+  app_register_footer: "Don't have an account? Click",
+  app_register_footer_link: 'Here',
 };

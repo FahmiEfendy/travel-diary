@@ -12,4 +12,8 @@ export default {
   app_register_form_label_1: 'Nama Lengkap',
   app_register_form_label_2: 'Kata Sandi',
   app_register_button: 'Daftar',
+
+  app_login_button: 'Masuk',
+  app_register_footer: 'Tidak punya akun? Klik ',
+  app_register_footer_link: 'Disini',
 };

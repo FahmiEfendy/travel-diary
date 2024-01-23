@@ -9,8 +9,9 @@ $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black:900;
 
-@mixin font($size, $weight) {
+@mixin font($size, $weight, $color) {
   font-family: $font-poppins !important;
   font-size: $size !important;
   font-weight: $weight !important;
+  color: $color !important;
 }

@@ -32,10 +32,27 @@
     }
   }
 
-  .btn_regist {
+  .btn_login {
     @include font(20px, $font-weight-bold, var(--color-button-text));
     text-transform: capitalize;
     margin-top: 2rem;
     width: 100%;
+  }
+
+  .footer_container {
+    @include directionX;
+    justify-content: center;
+    margin-top: 1rem;
+
+    .footer_text {
+      font-style: italic;
+      @include font(18px, $font-weight-extra-light, var(--color-text-secondary));
+    }
+
+    .footer_link {
+      margin-left: 0.2rem;
+      @include font(18px, $font-weight-bold, var(--color-text-secondary));
+      text-decoration: none;
+    }
   }
 }
