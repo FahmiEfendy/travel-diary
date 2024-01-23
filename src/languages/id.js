@@ -7,4 +7,9 @@ export default {
   app_popup_error_title: 'Terjadi kesalahan!',
   app_popup_error_message: 'Maaf, telah terjadi kesalahan. Silakan coba beberapa saat lagi',
   app_popup_close_button_label: 'Tutup',
+
+  app_register_header: 'Daftar',
+  app_register_form_label_1: 'Nama Lengkap',
+  app_register_form_label_2: 'Kata Sandi',
+  app_register_button: 'Daftar',
 };
