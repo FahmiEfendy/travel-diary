@@ -16,4 +16,9 @@ export default {
   app_login_button: 'Masuk',
   app_register_footer: 'Tidak punya akun? Klik ',
   app_register_footer_link: 'Disini',
+
+  app_journey_heading: 'Petualangan',
+  app_journey_header_text: 'Petualangan yang selalu kamu impikan',
+  app_journey_header_sub_text:
+    'Kami membuat alat agar kamu dapat dengan mudah menyimpan & membagikan kenangan perjalanan-mu. Dan banyak fitur lainnya',
 };

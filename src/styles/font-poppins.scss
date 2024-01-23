@@ -45,3 +45,17 @@
   font-style: italic;
   src: url('/src/static/fonts/poppins/poppins_italic.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: Poppins;
+  font-style: italic;
+  font-weight: 100;
+  src: url('/src/static/fonts/poppins/poppins_thinitalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-style: italic;
+  font-weight: 200;
+  src: url('/src/static/fonts/poppins/poppins_extralightitalic.ttf') format('truetype');
+}
