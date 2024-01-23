@@ -1,0 +1,46 @@
+@import '../../styles/base.scss';
+
+.container {
+  max-width: 100% !important;
+
+  h5 {
+    margin: 2rem 0 0 3rem;
+    @include font(36px, $font-weight-black, var(--color-text-primary));
+  }
+
+  .profile_container {
+    @include directionY;
+    align-items: center;
+    width: 100%;
+
+    img {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .profile_name {
+      margin-top: 0.5rem;
+      @include font(24px, $font-weight-black, var(--color-text-primary));
+    }
+
+    .profile_email {
+      @include font(18px, $font-weight-light, var(--color-text-third));
+      font-style: italic;
+    }
+
+    button {
+      @include font(16px, $font-weight-bold, var(--color-button-text));
+      margin: 1rem;
+      text-transform: capitalize;
+      padding: 0.1rem 1.5rem;
+    }
+  }
+
+  .grid_container {
+    @include directionX;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

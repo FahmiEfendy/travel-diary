@@ -2,6 +2,7 @@ import MainLayout from '@layouts/MainLayout';
 
 import Home from '@pages/Home';
 import Login from '@pages/Login';
+import Profile from '@pages/Profile';
 import Bookmark from '@pages/Bookmark';
 import NotFound from '@pages/NotFound';
 import Register from '@pages/Register';
@@ -33,6 +34,13 @@ const routes = [
     name: 'Bookmark',
     protected: false,
     component: Bookmark,
+    layout: MainLayout,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    protected: false,
+    component: Profile,
     layout: MainLayout,
   },
 

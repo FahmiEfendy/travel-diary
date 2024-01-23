@@ -23,4 +23,6 @@ export default {
     'Kami membuat alat agar kamu dapat dengan mudah menyimpan & membagikan kenangan perjalanan-mu. Dan banyak fitur lainnya',
 
   app_bookmark_heading: 'Markah',
+
+  app_profile_heading: 'Profil',
 };

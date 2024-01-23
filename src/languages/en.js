@@ -23,4 +23,6 @@ export default {
     'We made a tool so you can easily keep & share your travel memories. But there is a lot more',
 
   app_bookmark_heading: 'Bookmark',
+
+  app_profile_heading: 'Profile',
 };
