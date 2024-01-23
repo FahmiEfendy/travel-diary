@@ -21,4 +21,6 @@ export default {
   app_journey_header_text: 'The Journey you ever dreamed of.',
   app_journey_header_sub_text:
     'We made a tool so you can easily keep & share your travel memories. But there is a lot more',
+
+  app_bookmark_heading: 'Bookmark',
 };

@@ -1,0 +1,17 @@
+@import '../../styles/base.scss';
+
+.container {
+  max-width: 100% !important;
+
+  h5 {
+    margin: 2rem 0 0 3rem;
+    @include font(36px, $font-weight-black, var(--color-text-primary));
+  }
+
+  .grid_container {
+    @include directionX;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

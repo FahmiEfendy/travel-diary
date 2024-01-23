@@ -27,9 +27,7 @@
   .grid_container {
     @include directionX;
     justify-content: center;
-    width: 100%;
+    min-width: 100%;
     margin-top: 2rem;
-    position: relative;
-    z-index: -1;
   }
 }
