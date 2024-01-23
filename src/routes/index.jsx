@@ -2,11 +2,14 @@ import MainLayout from '@layouts/MainLayout';
 
 import Home from '@pages/Home';
 import Login from '@pages/Login';
+import Create from '@pages/Create';
+import Detail from '@pages/Detail';
 import Profile from '@pages/Profile';
 import Bookmark from '@pages/Bookmark';
 import NotFound from '@pages/NotFound';
 import Register from '@pages/Register';
 
+// TODO: Update Protected
 const routes = [
   {
     path: '/',
@@ -42,6 +45,27 @@ const routes = [
     protected: false,
     component: Profile,
     layout: MainLayout,
+  },
+  {
+    path: '/journey',
+    name: 'Journey',
+    protected: false,
+    subRoutes: [
+      {
+        path: '/create',
+        name: 'Create Journey',
+        protected: false,
+        component: Create,
+        layout: MainLayout,
+      },
+      {
+        path: '/:id',
+        name: 'Detail Journey',
+        protected: false,
+        component: Detail,
+        layout: MainLayout,
+      },
+    ],
   },
 
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },
