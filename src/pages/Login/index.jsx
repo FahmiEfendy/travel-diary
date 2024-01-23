@@ -7,6 +7,7 @@ import { Box, Button, Container, Link, TextField, Typography } from '@mui/materi
 
 import encryptPayload from '@utils/encryptPayload';
 import { createStructuredSelector } from 'reselect';
+import { setLogin, setToken } from '@containers/Client/actions';
 import { postLoginRequest } from './actions';
 import { selectLogin } from './selectors';
 
@@ -26,6 +27,11 @@ const Login = ({ login }) => {
     };
 
     dispatch(postLoginRequest(loginData));
+
+    if (login.data.token) {
+      dispatch(setLogin(true));
+      dispatch(setToken(login.data.token));
+    }
 
     if (!login.isError) navigate('/');
   };

@@ -75,6 +75,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
+    // TODO: Fix Styling When Logout
     <Container className={classes.container}>
       <Typography variant="h5">
         <FormattedMessage id="app_journey_heading" />
@@ -85,8 +86,8 @@ const Home = () => {
       </Box>
       <Grid container className={classes.grid_container} rowGap={5}>
         {/* TODO: Fetch Real Data */}
-        {journeyArr.map((data) => (
-          <Card data={data} key={data.id} />
+        {journeyArr.map((data, index) => (
+          <Card data={data} key={index} />
         ))}
       </Grid>
     </Container>
