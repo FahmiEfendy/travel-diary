@@ -9,7 +9,7 @@ import { createStructuredSelector } from 'reselect';
 import Card from '../../components/Card';
 import classes from './style.module.scss';
 import { selectBookmark } from './selectors';
-import { getBookmarkRequest } from './actions';
+import { deleteBookmarkRequest, getBookmarkRequest } from './actions';
 
 const Bookmark = ({ bookmark }) => {
   const dispatch = useDispatch();
@@ -17,6 +17,14 @@ const Bookmark = ({ bookmark }) => {
   useEffect(() => {
     dispatch(getBookmarkRequest());
   }, [dispatch]);
+
+  const deleteBookmarkHandler = (id) => {
+    dispatch(
+      deleteBookmarkRequest(id, () => {
+        dispatch(getBookmarkRequest());
+      })
+    );
+  };
 
   return (
     <Container className={classes.container}>
@@ -26,13 +34,15 @@ const Bookmark = ({ bookmark }) => {
       <Grid container className={classes.grid_container} rowGap={5}>
         {bookmark?.data?.map((data) => {
           const formattedData = {
-            id: data.id,
+            idPost: data.idPost,
             imageUrl: data.postBookmarks.imageUrl,
             title: data.postBookmarks.title,
             timestamp: data.postBookmarks.timestamp,
             description: data.postBookmarks.description,
           };
-          return <Card data={formattedData} key={data.id} />;
+          return (
+            <Card data={formattedData} key={data.id} deleteBookmarkHandler={deleteBookmarkHandler} onBookmarkPage />
+          );
         })}
       </Grid>
     </Container>

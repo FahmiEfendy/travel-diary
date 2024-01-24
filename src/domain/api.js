@@ -15,6 +15,7 @@ const urls = {
 
   getBookmark: '/bookmark',
   createBookmark: '/bookmark/create',
+  deleteBookmark: '/bookmark/remove',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -48,3 +49,4 @@ export const getMyPost = () => callAPI(urls.getMyPost, 'GET');
 
 export const getBookmark = () => callAPI(urls.getBookmark, 'GET');
 export const createBookmark = (data) => callAPI(urls.createBookmark, 'POST', {}, {}, data);
+export const deleteBookmark = (id) => callAPI(`${urls.deleteBookmark}/${id}`, 'DELETE');
