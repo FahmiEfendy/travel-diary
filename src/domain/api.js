@@ -12,6 +12,7 @@ const urls = {
 
   getPost: '/post',
   getMyPost: '/post/my-post',
+  createPost: '/post/create',
 
   getBookmark: '/bookmark',
   createBookmark: '/bookmark/create',
@@ -46,6 +47,10 @@ export const getProfile = () => callAPI(urls.getProfile, 'GET');
 
 export const getPost = () => callAPI(urls.getPost, 'GET');
 export const getMyPost = () => callAPI(urls.getMyPost, 'GET');
+export const createPost = (data) => {
+  const header = { 'Content-Type': 'multipart/form-data' };
+  return callAPI(urls.createPost, 'POST', header, {}, data);
+};
 
 export const getBookmark = () => callAPI(urls.getBookmark, 'GET');
 export const createBookmark = (data) => callAPI(urls.createBookmark, 'POST', {}, {}, data);

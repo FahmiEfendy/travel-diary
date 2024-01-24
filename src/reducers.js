@@ -9,6 +9,7 @@ import loginReducer, { storedKey as storedLoginState } from '@pages/Login/reduce
 import profileReducer, { storedKey as storedProfileState } from '@pages/Profile/reducer';
 
 import homeReducer, { storedKey as storedPostState } from '@pages/Home/reducer';
+import createReducerPage, { storedKey as storedCreateState } from '@pages/Create/reducer';
 
 import bookmarkReducer, { storedKey as storedBookmarkState } from '@pages/Bookmark/reducer';
 
@@ -23,6 +24,7 @@ const storedReducers = {
   profile: { reducer: profileReducer, whitelist: storedProfileState },
 
   home: { reducer: homeReducer, whitelist: storedPostState },
+  create: { reducer: createReducerPage, whitelist: storedCreateState },
 
   bookmark: { reducer: bookmarkReducer, whitelist: storedBookmarkState },
 };

@@ -25,4 +25,9 @@ export default {
   app_bookmark_heading: 'Markah',
 
   app_profile_heading: 'Profil',
+
+  app_journey_create_heading: 'Petualangan Baru',
+  app_journey_create_first_input: 'Judul',
+  app_journey_create_second_input: 'Deskripsi Singkat',
+  app_journey_create_third_input: 'Deskripsi',
 };

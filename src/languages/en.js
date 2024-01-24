@@ -25,4 +25,9 @@ export default {
   app_bookmark_heading: 'Bookmark',
 
   app_profile_heading: 'Profile',
+
+  app_journey_create_heading: 'New Journey',
+  app_journey_create_first_input: 'Title',
+  app_journey_create_second_input: 'Short Description',
+  app_journey_create_third_input: 'Description',
 };

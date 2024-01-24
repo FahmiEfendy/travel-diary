@@ -9,7 +9,6 @@ import Bookmark from '@pages/Bookmark';
 import NotFound from '@pages/NotFound';
 import Register from '@pages/Register';
 
-// TODO: Update Protected
 const routes = [
   {
     path: '/',
