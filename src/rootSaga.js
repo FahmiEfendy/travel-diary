@@ -8,6 +8,8 @@ import profileSaga from '@pages/Profile/saga';
 
 import homeSaga from '@pages/Home/saga';
 
+import bookmarkSaga from '@pages/Bookmark/saga';
+
 export default function* rootSaga() {
-  yield all([appSaga(), registerSaga(), loginSaga(), profileSaga(), homeSaga()]);
+  yield all([appSaga(), registerSaga(), loginSaga(), profileSaga(), homeSaga(), bookmarkSaga()]);
 }

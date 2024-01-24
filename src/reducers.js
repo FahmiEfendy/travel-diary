@@ -10,6 +10,8 @@ import profileReducer, { storedKey as storedProfileState } from '@pages/Profile/
 
 import homeReducer, { storedKey as storedPostState } from '@pages/Home/reducer';
 
+import bookmarkReducer, { storedKey as storedBookmarkState } from '@pages/Bookmark/reducer';
+
 import { mapWithPersistor } from './persistence';
 
 const storedReducers = {
@@ -21,6 +23,8 @@ const storedReducers = {
   profile: { reducer: profileReducer, whitelist: storedProfileState },
 
   home: { reducer: homeReducer, whitelist: storedPostState },
+
+  bookmark: { reducer: bookmarkReducer, whitelist: storedBookmarkState },
 };
 
 const temporaryReducers = {
