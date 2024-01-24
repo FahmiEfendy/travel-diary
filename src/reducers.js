@@ -8,14 +8,19 @@ import registerReducer, { storedKey as storedRegisterState } from '@pages/Regist
 import loginReducer, { storedKey as storedLoginState } from '@pages/Login/reducer';
 import profileReducer, { storedKey as storedProfileState } from '@pages/Profile/reducer';
 
+import homeReducer, { storedKey as storedPostState } from '@pages/Home/reducer';
+
 import { mapWithPersistor } from './persistence';
 
 const storedReducers = {
   app: { reducer: appReducer, whitelist: storedAppState },
   client: { reducer: clientReducer, whitelist: storedClientState },
+
   register: { reducer: registerReducer, whitelist: storedRegisterState },
   login: { reducer: loginReducer, whitelist: storedLoginState },
   profile: { reducer: profileReducer, whitelist: storedProfileState },
+
+  home: { reducer: homeReducer, whitelist: storedPostState },
 };
 
 const temporaryReducers = {

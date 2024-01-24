@@ -1,0 +1,3 @@
+export const GET_POST_REQUEST = 'Home/GET_POST_REQUEST';
+export const GET_POST_SUCCCESS = 'Home/GET_POST_SUCCESS';
+export const GET_POST_FAILED = 'Home/GET_POST_FAILED';

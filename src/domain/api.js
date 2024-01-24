@@ -5,9 +5,12 @@ import request from '@utils/request';
 
 const urls = {
   ping: 'ping.json',
+
   register: '/user/register',
   login: '/user/login',
   getProfile: '/user/get-profile',
+
+  getPost: '/post',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -35,3 +38,5 @@ export const ping = () => callAPI(urls.ping, 'get');
 export const postRegister = (data) => callAPI(urls.register, 'POST', {}, {}, data);
 export const postLogin = (data) => callAPI(urls.login, 'POST', {}, {}, data);
 export const getProfile = () => callAPI(urls.getProfile, 'GET');
+
+export const getPost = () => callAPI(urls.getPost, 'GET');
