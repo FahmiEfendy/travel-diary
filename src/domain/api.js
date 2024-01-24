@@ -11,6 +11,7 @@ const urls = {
   getProfile: '/user/get-profile',
 
   getPost: '/post',
+  getMyPost: '/post/my-post',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -40,3 +41,4 @@ export const postLogin = (data) => callAPI(urls.login, 'POST', {}, {}, data);
 export const getProfile = () => callAPI(urls.getProfile, 'GET');
 
 export const getPost = () => callAPI(urls.getPost, 'GET');
+export const getMyPost = () => callAPI(urls.getMyPost, 'GET');

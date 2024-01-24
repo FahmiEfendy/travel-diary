@@ -1,9 +1,21 @@
 import { produce } from 'immer';
 
-import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, GET_PROFILE_FAILED } from './constants';
+import {
+  GET_PROFILE_REQUEST,
+  GET_PROFILE_SUCCESS,
+  GET_PROFILE_FAILED,
+  GET_MY_POST_REQUEST,
+  GET_MY_POST_SUCCESS,
+  GET_MY_POST_FAILED,
+} from './constants';
 
 export const initialState = {
   profile: {
+    data: [],
+    isLoading: false,
+    isError: null,
+  },
+  myPost: {
     data: [],
     isLoading: false,
     isError: null,
@@ -31,6 +43,24 @@ const profileReducer = (state = initialState, action) =>
         draft.profile.isLoading = false;
         draft.profile.isError = action.error;
         draft.profile.data = [];
+        break;
+
+      case GET_MY_POST_REQUEST:
+        draft.myPost.isLoading = true;
+        draft.myPost.isError = null;
+        draft.myPost.data = [];
+        break;
+
+      case GET_MY_POST_SUCCESS:
+        draft.myPost.isLoading = false;
+        draft.myPost.isError = null;
+        draft.myPost.data = action.data;
+        break;
+
+      case GET_MY_POST_FAILED:
+        draft.myPost.isLoading = false;
+        draft.myPost.isError = action.error;
+        draft.myPost.data = [];
         break;
 
       default:

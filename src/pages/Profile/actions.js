@@ -1,8 +1,15 @@
-import { GET_PROFILE_FAILED, GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS } from './constants';
+import {
+  GET_MY_POST_FAILED,
+  GET_MY_POST_REQUEST,
+  GET_MY_POST_SUCCESS,
+  GET_PROFILE_FAILED,
+  GET_PROFILE_REQUEST,
+  GET_PROFILE_SUCCESS,
+} from './constants';
 
-export const getProfileRequest = (payload) => ({
+// GET Profile
+export const getProfileRequest = () => ({
   type: GET_PROFILE_REQUEST,
-  payload,
 });
 
 export const getProfileSuccess = (data) => ({
@@ -12,5 +19,20 @@ export const getProfileSuccess = (data) => ({
 
 export const getProfileFailed = (error) => ({
   type: GET_PROFILE_FAILED,
+  error,
+});
+
+// GET My Post
+export const getMyPostRequest = () => ({
+  type: GET_MY_POST_REQUEST,
+});
+
+export const getMyPostSuccess = (data) => ({
+  type: GET_MY_POST_SUCCESS,
+  data,
+});
+
+export const getMyPostFailed = (error) => ({
+  type: GET_MY_POST_FAILED,
   error,
 });
