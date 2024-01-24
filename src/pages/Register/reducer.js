@@ -5,30 +5,26 @@ import { POST_REGISTER_REQUEST, POST_REGISTER_SUCCESS, POST_REGISTER_FAILED } fr
 export const initialState = {
   register: {
     data: [],
-    isLoading: false,
     isError: null,
   },
 };
 
-export const storedKey = ['register'];
+export const storedKey = [''];
 
 const registerReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case POST_REGISTER_REQUEST:
-        draft.register.isLoading = true;
         draft.register.isError = null;
         draft.register.data = [];
         break;
 
       case POST_REGISTER_SUCCESS:
-        draft.register.isLoading = false;
         draft.register.isError = null;
         draft.register.data = action.data;
         break;
 
       case POST_REGISTER_FAILED:
-        draft.register.isLoading = false;
         draft.register.isError = action.error;
         draft.register.data = [];
         break;

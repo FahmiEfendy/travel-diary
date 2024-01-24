@@ -21,28 +21,26 @@ const Profile = ({ profile, myPost }) => {
   }, [dispatch]);
 
   return (
-    !profile.isLoading && (
-      <Container className={classes.container}>
-        <Typography variant="h5">
-          <FormattedMessage id="app_profile_heading" />
+    <Container className={classes.container}>
+      <Typography variant="h5">
+        <FormattedMessage id="app_profile_heading" />
+      </Typography>
+      <Box className={classes.profile_container}>
+        <img src={ProfileImage} alt="Profile" />
+        <Typography variant="body1" className={classes.profile_name}>
+          {profile.data.profile.fullname}
         </Typography>
-        <Box className={classes.profile_container}>
-          <img src={ProfileImage} alt="Profile" />
-          <Typography variant="body1" className={classes.profile_name}>
-            {profile.data.profile.fullname}
-          </Typography>
-          <Typography variant="body1" className={classes.profile_email}>
-            {profile.data.profile.email}
-          </Typography>
-          <Button variant="contained">Add New Post</Button>
-        </Box>
-        <Grid container className={classes.grid_container} rowGap={5}>
-          {myPost.data.map((data) => (
-            <Card data={data} key={data.id} />
-          ))}
-        </Grid>
-      </Container>
-    )
+        <Typography variant="body1" className={classes.profile_email}>
+          {profile.data.profile.email}
+        </Typography>
+        <Button variant="contained">Add New Post</Button>
+      </Box>
+      <Grid container className={classes.grid_container} rowGap={5}>
+        {myPost.data.map((data) => (
+          <Card data={data} key={data.id} />
+        ))}
+      </Grid>
+    </Container>
   );
 };
 

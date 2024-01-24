@@ -5,7 +5,6 @@ import { POST_LOGIN_FAILED, POST_LOGIN_REQUEST, POST_LOGIN_SUCCESS } from './con
 export const initialState = {
   login: {
     data: [],
-    isLoading: false,
     isError: null,
   },
 };
@@ -16,19 +15,16 @@ const loginReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case POST_LOGIN_REQUEST:
-        draft.login.isLoading = true;
         draft.login.isError = null;
         draft.login.data = [];
         break;
 
       case POST_LOGIN_SUCCESS:
-        draft.login.isLoading = false;
         draft.login.isError = null;
         draft.login.data = action.data;
         break;
 
       case POST_LOGIN_FAILED:
-        draft.login.isLoading = false;
         draft.login.isError = action.error;
         draft.login.data = [];
         break;

@@ -11,7 +11,6 @@ import {
 export const initialState = {
   bookmark: {
     data: [],
-    isLoading: false,
     isError: null,
   },
   createBookmark: {
@@ -26,19 +25,16 @@ const bookmarkReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case GET_BOOKMARK_REQUEST:
-        draft.bookmark.isLoading = true;
         draft.bookmark.isError = null;
         draft.bookmark.data = [];
         break;
 
       case GET_BOOKMARK_SUCCESS:
-        draft.bookmark.isLoading = false;
         draft.bookmark.isError = null;
         draft.bookmark.data = action.data;
         break;
 
       case GET_BOOKMARK_FAILED:
-        draft.bookmark.isLoading = false;
         draft.bookmark.isError = action.error;
         draft.bookmark.data = [];
         break;
