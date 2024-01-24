@@ -1,1 +1,41 @@
 @import '../../styles/base.scss';
+
+.container {
+  width: 80%;
+  margin: 2rem auto;
+  height: 100vh;
+
+  .wrapper_text {
+    @include directionX;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      @include font(50px, $font-weight-extra-light, var(--color-text-primary));
+      font-style: italic;
+    }
+
+    .user {
+      @include font(18px, $font-weight-extra-light, var(--color-text-primary));
+      font-style: italic;
+    }
+  }
+
+  .timestamp {
+    @include font(20px, $font-weight-regular, var(--color-text-fifth));
+  }
+
+  .image_background {
+    margin-top: 2rem;
+    border-radius: 20px;
+    height: 60%;
+    width: 100%;
+    background-size: 'cover';
+    background-position: 'center';
+    background-repeat: 'no-repeat';
+  }
+
+  .description {
+    margin-top: 2rem;
+  }
+}

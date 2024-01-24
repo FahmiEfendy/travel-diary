@@ -11,6 +11,7 @@ const urls = {
   getProfile: '/user/get-profile',
 
   getPost: '/post',
+  getPostDetail: '/post/detail',
   getMyPost: '/post/my-post',
   createPost: '/post/create',
 
@@ -46,6 +47,7 @@ export const postLogin = (data) => callAPI(urls.login, 'POST', {}, {}, data);
 export const getProfile = () => callAPI(urls.getProfile, 'GET');
 
 export const getPost = () => callAPI(urls.getPost, 'GET');
+export const getPostDetail = (id) => callAPI(`${urls.getPostDetail}/${id}`, 'GET');
 export const getMyPost = () => callAPI(urls.getMyPost, 'GET');
 export const createPost = (data) => {
   const header = { 'Content-Type': 'multipart/form-data' };
