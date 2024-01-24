@@ -1,12 +1,18 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-
+import { connect, useDispatch } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { selectProfile } from './selectors';
 
 import Card from '../../components/Card';
-import classes from './style.module.scss';
 import ProfileImage from '../../asset/profile.png';
 
-const Profile = () => {
+import classes from './style.module.scss';
+import { getProfileRequest } from './actions';
+
+const Profile = ({ profile }) => {
   // TODO: Fetch Real Data
   const journeyArr = [
     {
@@ -67,29 +73,45 @@ const Profile = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileRequest());
+  }, [dispatch]);
+
   return (
-    <Container className={classes.container}>
-      <Typography variant="h5">
-        <FormattedMessage id="app_profile_heading" />
-      </Typography>
-      {/* TODO: Fetch Real Data */}
-      <Box className={classes.profile_container}>
-        <img src={ProfileImage} alt="Profile" />
-        <Typography variant="body1" className={classes.profile_name}>
-          Fadhil
+    !profile.isLoading && (
+      <Container className={classes.container}>
+        <Typography variant="h5">
+          <FormattedMessage id="app_profile_heading" />
         </Typography>
-        <Typography variant="body1" className={classes.profile_email}>
-          fadhil@gmail.com
-        </Typography>
-        <Button variant="contained">Add New Post</Button>
-      </Box>
-      <Grid container className={classes.grid_container} rowGap={5}>
-        {journeyArr.map((data) => (
-          <Card data={data} key={data.id} />
-        ))}
-      </Grid>
-    </Container>
+        {/* TODO: Fetch Real Data */}
+        <Box className={classes.profile_container}>
+          <img src={ProfileImage} alt="Profile" />
+          <Typography variant="body1" className={classes.profile_name}>
+            {profile.data.profile.fullname}
+          </Typography>
+          <Typography variant="body1" className={classes.profile_email}>
+            {profile.data.profile.email}
+          </Typography>
+          <Button variant="contained">Add New Post</Button>
+        </Box>
+        <Grid container className={classes.grid_container} rowGap={5}>
+          {journeyArr.map((data) => (
+            <Card data={data} key={data.id} />
+          ))}
+        </Grid>
+      </Container>
+    )
   );
 };
 
-export default Profile;
+Profile.propTypes = {
+  profile: PropTypes.object,
+};
+
+const mapStateToProps = createStructuredSelector({
+  profile: selectProfile,
+});
+
+export default connect(mapStateToProps)(Profile);

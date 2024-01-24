@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 
 import appReducer, { storedKey as storedAppState } from '@containers/App/reducer';
 import clientReducer, { storedKey as storedClientState } from '@containers/Client/reducer';
+import languageReducer from '@containers/Language/reducer';
+
 import registerReducer, { storedKey as storedRegisterState } from '@pages/Register/reducer';
 import loginReducer, { storedKey as storedLoginState } from '@pages/Login/reducer';
-import languageReducer from '@containers/Language/reducer';
+import profileReducer, { storedKey as storedProfileState } from '@pages/Profile/reducer';
 
 import { mapWithPersistor } from './persistence';
 
@@ -13,6 +15,7 @@ const storedReducers = {
   client: { reducer: clientReducer, whitelist: storedClientState },
   register: { reducer: registerReducer, whitelist: storedRegisterState },
   login: { reducer: loginReducer, whitelist: storedLoginState },
+  profile: { reducer: profileReducer, whitelist: storedProfileState },
 };
 
 const temporaryReducers = {
