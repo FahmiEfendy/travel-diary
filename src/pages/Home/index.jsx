@@ -5,6 +5,7 @@ import { connect, useDispatch } from 'react-redux';
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 
 import { createStructuredSelector } from 'reselect';
+import { createBookmarkRequest } from '@pages/Bookmark/actions';
 import Card from '../../components/Card';
 import classes from './style.module.scss';
 import { getPostRequest } from './actions';
@@ -16,6 +17,10 @@ const Home = ({ post }) => {
   useEffect(() => {
     dispatch(getPostRequest());
   }, [dispatch]);
+
+  const createBookmarkHandler = (id) => {
+    dispatch(createBookmarkRequest({ postId: id }));
+  };
 
   return (
     // TODO: Fix Styling When Logout
@@ -29,7 +34,7 @@ const Home = ({ post }) => {
       </Box>
       <Grid container className={classes.grid_container} rowGap={5}>
         {post.data.map((data) => (
-          <Card data={data} key={data.id} />
+          <Card data={data} key={data.id} createBookmarkHandler={createBookmarkHandler} />
         ))}
       </Grid>
     </Container>

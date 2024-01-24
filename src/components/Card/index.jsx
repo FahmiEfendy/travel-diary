@@ -6,10 +6,16 @@ import { stringFormatter } from '@utils/stringFormatter';
 import classes from './style.module.scss';
 import BookmarkIcon from '../../asset/bookmark-icon.svg';
 
-const Card = ({ data }) => (
+const Card = ({ data, createBookmarkHandler }) => (
   <Grid item xs={3} key={data.id} className={classes.grid_item}>
     <img src={data.imageUrl} alt={data.title} className={classes.grid_img} />
-    <img src={BookmarkIcon} alt="Bookmark Icon" className={classes.bookmark_icon} />
+    <Box
+      onClick={() => {
+        createBookmarkHandler(data.id);
+      }}
+    >
+      <img src={BookmarkIcon} alt="Bookmark Icon" className={classes.bookmark_icon} />
+    </Box>
     <Box className={classes.detail_wrapper}>
       <Typography variant="body1" className={classes.grid_title}>
         {data.title}
@@ -26,6 +32,7 @@ const Card = ({ data }) => (
 
 Card.propTypes = {
   data: PropTypes.object,
+  createBookmarkHandler: PropTypes.func,
 };
 
 export default Card;

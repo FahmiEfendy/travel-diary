@@ -1,10 +1,21 @@
 import { produce } from 'immer';
-import { GET_BOOKMARK_FAILED, GET_BOOKMARK_REQUEST, GET_BOOKMARK_SUCCESS } from './constants';
+import {
+  CREATE_BOOKMARK_FAILED,
+  CREATE_BOOKMARK_REQUEST,
+  CREATE_BOOKMARK_SUCCESS,
+  GET_BOOKMARK_FAILED,
+  GET_BOOKMARK_REQUEST,
+  GET_BOOKMARK_SUCCESS,
+} from './constants';
 
 export const initialState = {
   bookmark: {
     data: [],
     isLoading: false,
+    isError: null,
+  },
+  createBookmark: {
+    data: [],
     isError: null,
   },
 };
@@ -30,6 +41,21 @@ const bookmarkReducer = (state = initialState, action) =>
         draft.bookmark.isLoading = false;
         draft.bookmark.isError = action.error;
         draft.bookmark.data = [];
+        break;
+
+      case CREATE_BOOKMARK_REQUEST:
+        draft.createBookmark.isError = null;
+        draft.createBookmark.data = [];
+        break;
+
+      case CREATE_BOOKMARK_SUCCESS:
+        draft.createBookmark.isError = null;
+        draft.createBookmark.data = action.data;
+        break;
+
+      case CREATE_BOOKMARK_FAILED:
+        draft.createBookmark.isError = action.error;
+        draft.createBookmark.data = [];
         break;
 
       default:

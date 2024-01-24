@@ -14,6 +14,7 @@ const urls = {
   getMyPost: '/post/my-post',
 
   getBookmark: '/bookmark',
+  createBookmark: '/bookmark/create',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -46,3 +47,4 @@ export const getPost = () => callAPI(urls.getPost, 'GET');
 export const getMyPost = () => callAPI(urls.getMyPost, 'GET');
 
 export const getBookmark = () => callAPI(urls.getBookmark, 'GET');
+export const createBookmark = (data) => callAPI(urls.createBookmark, 'POST', {}, {}, data);
