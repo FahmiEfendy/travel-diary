@@ -63,6 +63,7 @@ const Navbar = ({ locale, login }) => {
   const clearLogin = () => {
     dispatch(setToken(null));
     dispatch(setLogin(false));
+    dropdownCloseHandler();
   };
 
   return (
@@ -129,6 +130,7 @@ const Navbar = ({ locale, login }) => {
           <MenuItem
             onClick={() => {
               navigate('/profile');
+              dropdownCloseHandler();
             }}
           >
             <div className={classes.dropdown}>
@@ -143,6 +145,7 @@ const Navbar = ({ locale, login }) => {
           <MenuItem
             onClick={() => {
               navigate('/journey/create');
+              dropdownCloseHandler();
             }}
           >
             <div className={classes.dropdown}>
@@ -157,6 +160,7 @@ const Navbar = ({ locale, login }) => {
           <MenuItem
             onClick={() => {
               navigate('/bookmark');
+              dropdownCloseHandler();
             }}
           >
             <div className={classes.dropdown}>
@@ -168,7 +172,7 @@ const Navbar = ({ locale, login }) => {
               </div>
             </div>
           </MenuItem>
-          <MenuItem onClick={clearLogin}>
+          <MenuItem onClick={clearLogin} onClose={dropdownCloseHandler}>
             <div className={classes.dropdown}>
               <div className={classes.menu_icon}>
                 <img src={LogoutIcon} alt="Logout" />
