@@ -12,6 +12,7 @@ export default {
   app_register_form_label_1: 'Nama Lengkap',
   app_register_form_label_2: 'Kata Sandi',
   app_register_button: 'Daftar',
+  app_register_fullname_empty: 'Nama Lengkap tidak boleh kosong!',
 
   app_login_button: 'Masuk',
   app_login_footer: 'Tidak punya akun? Klik ',
@@ -34,6 +35,9 @@ export default {
   app_journey_create_first_input: 'Judul',
   app_journey_create_second_input: 'Deskripsi Singkat',
   app_journey_create_third_input: 'Deskripsi',
+  app_journey_create_title_empty: 'Title tidak boleh kosong!',
+  app_journey_create_shortDesc_empty: 'Deskrpsi Singkat tidak boleh kosong!',
+  app_journey_create_file_empty: 'File tidak boleh kosong!',
 
   app_dropdown_profile: 'Profil',
   app_dropdown_new_journey: 'Perjalanan Baru',

@@ -17,8 +17,8 @@ const Login = ({ login }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState({ value: '', isError: false, isLength6: false });
-  const [password, setPassword] = useState({ value: '', isError: false });
+  const [email, setEmail] = useState({ value: '', isError: false });
+  const [password, setPassword] = useState({ value: '', isError: false, isNotLength6: false });
 
   const loginValidation = () => {
     let isValid = true;
@@ -107,7 +107,7 @@ const Login = ({ login }) => {
         <Typography variant="body1" className={classes.footer_text}>
           <FormattedMessage id="app_login_footer" />
         </Typography>
-        <Link href="/login" className={classes.footer_link}>
+        <Link href="/register" className={classes.footer_link}>
           <FormattedMessage id="app_login_footer_link" />
         </Link>
       </Box>

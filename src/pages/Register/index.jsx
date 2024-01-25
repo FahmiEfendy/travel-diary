@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, FormLabel, TextField, Typography } from '@mui/material';
 
 import { connect, useDispatch } from 'react-redux';
 import encryptPayload from '@utils/encryptPayload';
@@ -16,26 +16,54 @@ const Register = ({ register }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [fullname, setFullname] = useState({ value: '', isError: false });
+  const [email, setEmail] = useState({ value: '', isError: false });
+  const [password, setPassword] = useState({ value: '', isError: false, isNotLength6: false });
+
+  const loginValidation = () => {
+    let isValid = true;
+
+    if (fullname.value === '') {
+      setFullname((prevState) => ({ ...prevState, isError: true }));
+      isValid = false;
+    }
+
+    if (email.value === '') {
+      setEmail((prevState) => ({ ...prevState, isError: true }));
+      isValid = false;
+    }
+
+    if (password.value === '') {
+      setPassword((prevState) => ({ ...prevState, isError: true }));
+      isValid = false;
+    }
+
+    if (password.value.length < 6) {
+      setPassword((prevState) => ({ ...prevState, isNotLength6: true }));
+      isValid = false;
+    }
+
+    return isValid;
+  };
 
   const registerHandler = () => {
+    const isFormValid = loginValidation();
+
+    if (!isFormValid) return;
+
     const registerData = {
-      fullname: encryptPayload(fullname),
-      email: encryptPayload(email),
-      password: encryptPayload(password),
+      fullname: encryptPayload(fullname.value),
+      email: encryptPayload(email.value),
+      password: encryptPayload(password.value),
     };
     dispatch(postRegisterRequest(registerData));
 
     if (register.isError) return;
 
-    // TODO: Fix Navigate to Login on First Register Clicked
     navigate('/login');
   };
 
   return (
-    // TODO: Validation = All Fields Required and Password Min. 6 Char
     // TODO: Show Error Message When User Input Wrong Email or Password
     <Container maxWidth="xs" className={classes.container}>
       <Typography variant="h5">
@@ -45,13 +73,52 @@ const Register = ({ register }) => {
         <Typography variant="body1">
           <FormattedMessage id="app_register_form_label_1" />
         </Typography>
-        <TextField variant="outlined" type="text" fullWidth onChange={(e) => setFullname(e.target.value)} />
+        {fullname.isError && (
+          <FormLabel className={classes.input_error}>
+            <FormattedMessage id="app_register_fullname_empty" />
+          </FormLabel>
+        )}
+        <TextField
+          variant="outlined"
+          type="text"
+          fullWidth
+          value={fullname.value}
+          onChange={(e) => setFullname({ value: e.target.value, isError: e.target.value === '' })}
+        />
         <Typography variant="body1">Email</Typography>
-        <TextField variant="outlined" type="email" fullWidth onChange={(e) => setEmail(e.target.value)} />
+        {email.isError && (
+          <FormLabel className={classes.input_error}>
+            <FormattedMessage id="app_login_email_empty" />{' '}
+          </FormLabel>
+        )}
+        <TextField
+          variant="outlined"
+          type="email"
+          fullWidth
+          value={email.value}
+          onChange={(e) => setEmail({ value: e.target.value, isError: e.target.value === '' })}
+        />
         <Typography variant="body1">
           <FormattedMessage id="app_register_form_label_2" />
         </Typography>
-        <TextField variant="outlined" type="password" fullWidth onChange={(e) => setPassword(e.target.value)} />
+        {password.isError ? (
+          <FormLabel className={classes.input_error}>
+            <FormattedMessage id="app_login_password_empty" />
+          </FormLabel>
+        ) : (
+          password.isNotLength6 && (
+            <FormLabel className={classes.input_error}>
+              <FormattedMessage id="app_login_passowrd_is_not_6_char" />
+            </FormLabel>
+          )
+        )}
+        <TextField
+          variant="outlined"
+          type="password"
+          fullWidth
+          value={password.value}
+          onChange={(e) => setPassword({ value: e.target.value, isError: e.target.value === '' })}
+        />
       </Box>
       <Button variant="contained" className={classes.btn_regist} onClick={registerHandler}>
         <FormattedMessage id="app_register_button" />

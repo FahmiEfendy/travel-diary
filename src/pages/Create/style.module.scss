@@ -8,6 +8,11 @@
     @include font(36px, $font-weight-black, var(--color-text-primary));
   }
 
+  .input_error_file {
+    @include font(14px, $font-weight-regular, red);
+    margin-left: 5rem !important;
+  }
+
   .file_input_wrapper {
     @include directionX;
     justify-content: center;
@@ -26,6 +31,10 @@
 
   .input_container {
     margin: 1rem 5rem;
+
+    .input_error {
+      @include font(14px, $font-weight-regular, red);
+    }
 
     .input_wrapper {
       margin: 1.5rem 0rem;

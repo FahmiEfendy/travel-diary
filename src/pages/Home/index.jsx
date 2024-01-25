@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect, useDispatch } from 'react-redux';
-import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
 import { createStructuredSelector } from 'reselect';
 import { selectBookmark } from '@pages/Bookmark/selectors';
@@ -34,14 +34,14 @@ const Home = ({ post, bookmark }) => {
         <TextField fullWidth type="text" placeholder="Find journey..." />
         <Button variant="contained">Search</Button>
       </Box>
-      <Grid container className={classes.grid_container} rowGap={5}>
+      <Box container className={classes.grid_container}>
         {post.data.map((data) => {
           const isBookmarked = bookmark.data.some((d) => d.idPost === data.id);
           return (
             <Card data={data} key={data.id} isBookmarked={isBookmarked} createBookmarkHandler={createBookmarkHandler} />
           );
         })}
-      </Grid>
+      </Box>
     </Container>
   );
 };

@@ -12,6 +12,7 @@ export default {
   app_register_form_label_1: 'Full Name',
   app_register_form_label_2: 'Password',
   app_register_button: 'Register',
+  app_register_fullname_empty: 'Full Name cannot be empty!',
 
   app_login_button: 'Login',
   app_login_footer: "Don't have an account? Click",
@@ -34,6 +35,9 @@ export default {
   app_journey_create_first_input: 'Title',
   app_journey_create_second_input: 'Short Description',
   app_journey_create_third_input: 'Description',
+  app_journey_create_title_empty: 'Title cannot be empty!',
+  app_journey_create_shortDesc_empty: 'Short Description cannot be empty!',
+  app_journey_create_file_empty: 'File cannot be empty!',
 
   app_dropdown_profile: 'Profile',
   app_dropdown_new_journey: 'New Journey',
