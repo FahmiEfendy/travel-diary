@@ -34,7 +34,12 @@ const Card = ({ data, isBookmarked, onBookmarkPage = false }) => {
       <img src={data.imageUrl} alt={data.title} className={classes.grid_img} />
       <Box
         onClick={() => {
-          isBookmarked ? deleteBookmarkHandler(data.id) : createBookmarkHandler(data.id);
+          // eslint-disable-next-line no-nested-ternary
+          isBookmarked
+            ? onBookmarkPage
+              ? deleteBookmarkHandler(data.idPost)
+              : deleteBookmarkHandler(data.id)
+            : createBookmarkHandler(data.id);
         }}
       >
         <img

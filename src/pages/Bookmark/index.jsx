@@ -40,8 +40,15 @@ const Bookmark = ({ bookmark }) => {
             timestamp: data.postBookmarks.timestamp,
             description: data.postBookmarks.description,
           };
+          const isBookmarked = bookmark.data.some((d) => d.idPost === data.idPost);
           return (
-            <Card data={formattedData} key={data.id} deleteBookmarkHandler={deleteBookmarkHandler} onBookmarkPage />
+            <Card
+              data={formattedData}
+              key={data.id}
+              isBookmarked={isBookmarked}
+              deleteBookmarkHandler={deleteBookmarkHandler}
+              onBookmarkPage
+            />
           );
         })}
       </Grid>
