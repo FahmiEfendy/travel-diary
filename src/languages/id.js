@@ -14,8 +14,12 @@ export default {
   app_register_button: 'Daftar',
 
   app_login_button: 'Masuk',
-  app_register_footer: 'Tidak punya akun? Klik ',
-  app_register_footer_link: 'Disini',
+  app_login_footer: 'Tidak punya akun? Klik ',
+  app_login_footer_link: 'Disini',
+  app_login_email_empty: 'Email tidak boleh kosong!',
+  app_login_password_empty: 'Password tidak boleh kosong!',
+  app_login_passowrd_is_not_6_char: 'Password harus lebih dari 6 character!',
+  app_login_credential_wrong: 'Email atau password salah!',
 
   app_journey_heading: 'Petualangan',
   app_journey_header_text: 'Petualangan yang selalu kamu impikan',

@@ -14,8 +14,12 @@ export default {
   app_register_button: 'Register',
 
   app_login_button: 'Login',
-  app_register_footer: "Don't have an account? Click",
-  app_register_footer_link: 'Here',
+  app_login_footer: "Don't have an account? Click",
+  app_login_footer_link: 'Here',
+  app_login_email_empty: 'Email cannot be empty!',
+  app_login_password_empty: 'Password cannot be empty!',
+  app_login_passowrd_is_not_6_char: 'Password length must be more than 6 character!',
+  app_login_credential_wrong: 'Invalid email or password!',
 
   app_journey_heading: 'Journey',
   app_journey_header_text: 'The Journey you ever dreamed of.',

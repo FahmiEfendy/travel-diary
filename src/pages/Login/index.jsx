@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
-import { Box, Button, Container, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, FormLabel, Link, TextField, Typography } from '@mui/material';
 
 import encryptPayload from '@utils/encryptPayload';
 import { createStructuredSelector } from 'reselect';
@@ -17,13 +17,38 @@ const Login = ({ login }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState({ value: '', isError: false, isLength6: false });
+  const [password, setPassword] = useState({ value: '', isError: false });
+
+  const loginValidation = () => {
+    let isValid = true;
+
+    if (email.value === '') {
+      setEmail((prevState) => ({ ...prevState, isError: true }));
+      isValid = false;
+    }
+
+    if (password.value === '') {
+      setPassword((prevState) => ({ ...prevState, isError: true }));
+      isValid = false;
+    }
+
+    if (password.value.length < 6) {
+      setPassword((prevState) => ({ ...prevState, isNotLength6: true }));
+      isValid = false;
+    }
+
+    return isValid;
+  };
 
   const loginHandler = () => {
+    const isFormValid = loginValidation();
+
+    if (!isFormValid) return;
+
     const loginData = {
-      email: encryptPayload(email),
-      password: encryptPayload(password),
+      email: encryptPayload(email.value),
+      password: encryptPayload(password.value),
     };
 
     dispatch(postLoginRequest(loginData));
@@ -35,29 +60,55 @@ const Login = ({ login }) => {
 
     if (!login.isError) navigate('/');
   };
-
   return (
-    // TODO: Validation = All Fields Required and Password Min. 6 Char
     // TODO: Show Error Message When User Input Wrong Email or Password
     <Container maxWidth="xs" className={classes.container}>
       <Typography variant="h5">Login</Typography>
       <Box className={classes.input_container}>
         <Typography variant="body1">Email</Typography>
-        <TextField variant="outlined" type="email" fullWidth onChange={(e) => setEmail(e.target.value)} />
+        {email.isError && (
+          <FormLabel className={classes.input_error}>
+            <FormattedMessage id="app_login_email_empty" />{' '}
+          </FormLabel>
+        )}
+        <TextField
+          required
+          variant="outlined"
+          type="email"
+          fullWidth
+          onChange={(e) => setEmail({ value: e.target.value, isError: e.target.value === '' })}
+        />
         <Typography variant="body1">
           <FormattedMessage id="app_register_form_label_2" />
         </Typography>
-        <TextField variant="outlined" type="password" fullWidth onChange={(e) => setPassword(e.target.value)} />
+        {password.isError ? (
+          <FormLabel className={classes.input_error}>
+            <FormattedMessage id="app_login_password_empty" />
+          </FormLabel>
+        ) : (
+          password.isNotLength6 && (
+            <FormLabel className={classes.input_error}>
+              <FormattedMessage id="app_login_passowrd_is_not_6_char" />
+            </FormLabel>
+          )
+        )}
+        <TextField
+          required
+          variant="outlined"
+          type="password"
+          fullWidth
+          onChange={(e) => setPassword({ value: e.target.value, isError: e.target.value === '' })}
+        />
       </Box>
       <Button variant="contained" className={classes.btn_login} onClick={loginHandler}>
         <FormattedMessage id="app_login_button" />
       </Button>
       <Box className={classes.footer_container}>
         <Typography variant="body1" className={classes.footer_text}>
-          <FormattedMessage id="app_register_footer" />
+          <FormattedMessage id="app_login_footer" />
         </Typography>
-        <Link href="/register" className={classes.footer_link}>
-          <FormattedMessage id="app_register_footer_link" />
+        <Link href="/login" className={classes.footer_link}>
+          <FormattedMessage id="app_login_footer_link" />
         </Link>
       </Box>
     </Container>

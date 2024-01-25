@@ -16,6 +16,10 @@
   .input_container {
     margin-top: 2.5rem;
 
+    .input_error {
+      @include font(14px, $font-weight-regular, red);
+    }
+
     p {
       @include font(20px, $font-weight-extra-bold, var(--color-text-primary));
       margin: 1rem 0 0 0.3rem;
