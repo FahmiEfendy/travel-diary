@@ -30,4 +30,9 @@ export default {
   app_journey_create_first_input: 'Judul',
   app_journey_create_second_input: 'Deskripsi Singkat',
   app_journey_create_third_input: 'Deskripsi',
+
+  app_dropdown_profile: 'Profil',
+  app_dropdown_new_journey: 'Perjalanan Baru',
+  app_dropdown_bookmark: 'Markah',
+  app_dropdown_logout: 'Keluar',
 };

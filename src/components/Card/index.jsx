@@ -36,7 +36,7 @@ const Card = ({ data, createBookmarkHandler, deleteBookmarkHandler, onBookmarkPa
           {data.timestamp}
         </Typography>
         <Typography variant="body1" className={classes.grid_description}>
-          {stringFormatter(data.description)}
+          {data.shortDesc}
         </Typography>
       </Box>
     </Grid>

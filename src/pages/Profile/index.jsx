@@ -28,15 +28,15 @@ const Profile = ({ profile, myPost }) => {
       <Box className={classes.profile_container}>
         <img src={ProfileImage} alt="Profile" />
         <Typography variant="body1" className={classes.profile_name}>
-          {profile.data.profile.fullname}
+          {profile?.data?.profile?.fullname}
         </Typography>
         <Typography variant="body1" className={classes.profile_email}>
-          {profile.data.profile.email}
+          {profile?.data?.profile?.email}
         </Typography>
         <Button variant="contained">Add New Post</Button>
       </Box>
       <Grid container className={classes.grid_container} rowGap={5}>
-        {myPost.data.map((data) => (
+        {myPost?.data.map((data) => (
           <Card data={data} key={data.id} />
         ))}
       </Grid>

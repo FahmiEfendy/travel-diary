@@ -8,25 +8,14 @@ import { getProfileSuccess, getProfileFailed, getMyPostSuccess, getMyPostFailed 
 function* doGetProfile() {
   yield put(setLoading(true));
 
-  // GET Profile
   try {
-    const response = yield call(getProfile);
+    const profileResponse = yield call(getProfile);
+    const postResponse = yield call(getMyPost);
 
-    yield put(getProfileSuccess(response.data));
+    yield put(getProfileSuccess(profileResponse.data));
+    yield put(getMyPostSuccess(postResponse.data));
   } catch (err) {
     yield put(getProfileFailed(err.message));
-  }
-
-  yield put(setLoading(false));
-
-  yield put(setLoading(true));
-
-  // GET My Post
-  try {
-    const response = yield call(getMyPost);
-
-    yield put(getMyPostSuccess(response.data));
-  } catch (err) {
     yield put(getMyPostFailed(err.message));
   }
 

@@ -30,4 +30,9 @@ export default {
   app_journey_create_first_input: 'Title',
   app_journey_create_second_input: 'Short Description',
   app_journey_create_third_input: 'Description',
+
+  app_dropdown_profile: 'Profile',
+  app_dropdown_new_journey: 'New Journey',
+  app_dropdown_bookmark: 'Bookmark',
+  app_dropdown_logout: 'Logout',
 };
